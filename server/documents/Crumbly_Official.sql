@@ -1,0 +1,46 @@
+CREATE DATABASE Crumbly
+CHARACTER SET = utf8mb4
+collate = utf8mb4_general;
+
+CREATE TABLE TypeUser (
+ID_TypeUser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+TypeUser VARCHAR(40) NOT NULL
+);
+
+CREATE TABLE Local_Users (
+ID_Local_Users INT AUTO_INCREMENT PRIMARY KEY,
+Username NVARCHAR(50) NOT NULL,
+email NVARCHAR (60) NOT NULL,
+password NVARCHAR (100)NOT NULL,
+ID_TypeUser INT NOT NULL
+);
+
+CREATE TABLE Firebase_Users (
+ID_FirebaseUser INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+Firebase_UID VARCHAR (100) NOT NULL,
+email NVARCHAR (60) NOT NULL,
+display_name NVARCHAR (100) NOT NULL,
+photo_url VARCHAR (255) ,
+ID_TypeUser INT NOT NULL
+);
+
+CREATE TABLE Administrador (
+ID_Administrador INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ID_LocalUser INT NOT NULL,
+name_employee NVARCHAR(60) NOT NULL,
+lastname_employee NVARCHAR(60) NOT NULL,
+identity_document VARCHAR (10) NOT NULL,
+photo_url VARCHAR(255)
+);
+
+CREATE TABLE Costumers (
+ID_Costumers INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ID_FirebaseUser INT ,
+ID_LocalUser INT,
+name_costumer NVARCHAR(60) NOT NULL,
+lastname_costumer NVARCHAR(60) NOT NULL,
+direction NVARCHAR(150) NOT NULL,
+telefono VARCHAR (25),
+
+
+)

@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Potta+One&display=swap');
+@import "tailwindcss";
+
+
+
+.navbar {
+  @apply fixed top-0 left-0 w-full py-0.5 transition-all z-50;
+  background-color: transparent 50%;
+  backdrop-filter: blur(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 90px;
+  
+}
+
+.navbar-container {
+  @apply flex justify-between items-center w-full max-w-7xl mx-auto px-8;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+
+}
+
+.navbar--scrolled {
+  background-color: rgba(162, 112, 77, 0.75);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(12px);
+}
+
+.logo {
+  font-family: "Potta One", cursive;
+  font-size: 1.9rem;
+  color: #331F10;
+  letter-spacing: 1px;
+  line-height: 3;
+}
+/* Para los lados de la barra de navegación: */
+.navbar-left,
+.navbar-right {
+ font-family: "Gentium Plus", serif;
+}
+
+/* El lado izquierdo debe alinear su contenido al inicio (izquierda) */
+.navbar-left {
+ @apply flex items-center gap-6 justify-start flex-1; /* Usamos justify-start y flex-1 */
+}
+
+/* El lado derecho debe alinear su contenido al final (derecha) */
+.navbar-right {
+ @apply flex items-center gap-6 justify-end flex-1; /* Usamos justify-end y flex-1 */
+}
+
+
+
+.nav-item {
+  @apply flex items-center gap-2 text-[#331F10] hover:text-orange-600 transition;
+  font-size: 15px;
+}
+
+.dropdown-btn {
+  @apply flex items-center gap-1 text-[#331F10] hover:text-orange-600 transition;
+}
+
+.dropdown-icon {
+  @apply transition-transform duration-300;
+}
+
+.dropdown-icon.open {
+  transform: rotate(180deg);
+}
+
+.icon,
+.icon-button {
+  @apply w-5 h-5 text-[#331F10];
+  align-items: center;
+}
+
+.icon-button {
+  margin-left: 0.5rem;
+}
+
+
+
+
+.btn-login,
+.btn-signup {
+  @apply flex items-center justify-center gap-2 px-5 py-2 rounded transition;
+  font-family: "Gentium Plus", serif;
+  width: 8rem;
+  line-height: 1;
+}
+
+.btn-login {
+  @apply   bg-[#A2704D] text-[#331E11] hover:bg-[#A2704D]/80 hover:text-white;
+  cursor: pointer;
+}
+
+.btn-signup {
+  @apply   bg-[#A2704D] text-[#331E11] hover:bg-[#A2704D]/80 hover:text-white;
+  width: 9rem;
+  cursor: pointer;
+}
+
+.btn-login svg,
+.btn-signup svg {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 0;
+  /* elimina cualquier salto hacia abajo */
+  margin-bottom: 0;
+}
+
