@@ -44,6 +44,16 @@ body,
   @apply  border-t border-gray-400/80;
 }
 
+.border-line2 {
+  position: absolute;
+  top: 176vh;
+  left: 0;
+  border:none;
+  background: transparent;
+  width: 100%;
+  @apply border-t border-gray-400/80;
+}
+
 .spacer {
   @apply w-full h-screen;
 }
@@ -67,8 +77,8 @@ body,
 
 .title {
   font-family: "Potta One", cursive;
-  font-size: 30pt;
-  text-align: start;
+  font-size: 25pt;
+  text-align: center;
 }
 
 .body-info , ul{
@@ -76,4 +86,30 @@ body,
   font-size: 19pt;
   text-align: start;
   padding-top: 2rem;
+}
+
+li, .icon {
+  display: flex;
+  align-items: center;
+  font-family: "Gentium Plus";
+}
+
+.icon {
+  margin-right: 1rem;
+}
+
+#Leaf{
+  color: green;
+}
+
+#Truck {
+  color: blueviolet;
+}
+
+#Box {
+  color: #A27;
+}
+
+.Hero-section-cards {
+  margin-top: 5rem;
 }

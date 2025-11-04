@@ -1,8 +1,9 @@
-import React from "react";
 import "../../styles/public/HomePage.css";
 import Navbar from "../../components/public/Navbar.jsx";
 import Orderbox from "../../assets/public/HomePage/Orderbox.jpg";
 import Macarons from "../../assets/public/HomePage/macaronsPackage.jpg";
+import { LeafFill, Truck, Boxes } from "react-bootstrap-icons";
+import Cards from "../../components/public/card.jsx";
 function HomePage() {
   return (
     <>
@@ -31,11 +32,18 @@ function HomePage() {
             yourself
           </p>
           <ul>
-            <li>Natural Ingredients</li>
-            <li>Fast & Safe Delivery</li>
-            <li>Personalized Boxes</li>
+            <li><LeafFill className="icon" id="Leaf" />  Natural Ingredients</li>
+            <li><Truck className="icon" id="Truck" /> Fast & Safe Delivery</li>
+            <li><Boxes className="icon" id="Box" /> Personalized Boxes</li>
           </ul>
         </div>
+      </div>
+      <hr className="border-line2" />
+      <div className="Hero-section-cards">
+        <div className="container-title">
+          <h1 className="title">Our Best-Selling Products</h1>
+        </div>
+          <Cards />
       </div>
     </>
   );
