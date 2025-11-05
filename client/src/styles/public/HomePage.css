@@ -46,7 +46,7 @@ body,
 
 .border-line2 {
   position: absolute;
-  top: 184vh;
+  top: 194vh;
   left: 0;
   border:none;
   background: transparent;
@@ -79,6 +79,7 @@ body,
   font-family: "Potta One", cursive;
   font-size: 25pt;
   text-align: center;
+  
 }
 
 .body-info , ul{
@@ -111,5 +112,95 @@ li, .icon {
 }
 
 .Hero-section-cards {
-  margin-top: 5rem;
+  margin-top: 6rem;
+}
+
+@media (max-width: 768px) {
+
+
+  .hero-section {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+ 
+  .hero-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    object-position: center;
+  }
+
+
+  .spacer {
+    height: 45vh; 
+    width: 100%;
+  }
+  .border-line {
+    top: 50vh;
+  }
+
+  .section-brand {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem;
+
+  }
+
+  #Section-image {
+    width: 100%;
+    
+  }
+
+  .section-info {
+    margin: 0 auto;
+    width: 90%;
+    text-align: start;
+  }
+
+  .section-info .title {
+    font-size: 22pt;
+    line-height: 1.3;
+    text-align: start;
+  }
+
+  .section-info .body-info {
+    font-size: 14pt;
+    margin-top: 1rem;
+  }
+
+  .section-info ul {
+    margin-top: 1.5rem;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.75rem;
+  }
+
+  .section-info li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14pt;
+    gap: 0.5rem;
+  }
+
+  .section-info .icon {
+    font-size: 18pt;
+  }
 }

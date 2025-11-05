@@ -4,9 +4,10 @@
 .navbar {
     @apply fixed top-0 left-0 w-full py-0.5 transition-all z-50;
     background-color: transparent ;
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 90px;
+    border: none;
 }
 
 .navbar-container {
@@ -128,7 +129,7 @@
 
 #btn-mobile {
     margin-top: 1rem;
-    width: ;
+    width: 100%;
 }
 @keyframes slideDown {
     0% {
