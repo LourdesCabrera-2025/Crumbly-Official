@@ -9,19 +9,26 @@ class ProductoController extends Controller
 {
     public function index()
     {
-        return response()->json(Producto::all(), 200);
+        $productos = Producto::all();
+
+        if ($productos->isEmpty()) {
+            return response()->json(['message' => 'No hay productos registrados', 'data' => []], 200);
+        } else {
+            return response()->json(['message' => 'Productos registrados', 'data' => $productos], 200);
+        }
     }
+
 
     public function show($id)
     {
         $producto = Producto::find($id);
-        if(!$producto) {
+        if (!$producto) {
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
         return response()->json($producto, 200);
     }
 
-    public function store(Request $request) 
+    public function store(Request $request)
     {
         $producto = Producto::create($request->all());
         return response()->json($producto, 201);
@@ -29,18 +36,18 @@ class ProductoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $producto = Producto::find($id);
-        if(!$producto) {
+        $producto = Producto::find($id);        
+        if (!$producto) {
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
         $producto->update($request->all());
         return response()->json($producto, 200);
     }
 
-    public function destroy($id) 
+    public function destroy($id)
     {
         $producto = Producto::find($id);
-        if(!$producto) {
+        if (!$producto) {
             return response()->json(['message' => 'Producto no encontrado'], 404);
         }
         $producto->delete();
