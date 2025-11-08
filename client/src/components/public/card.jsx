@@ -128,7 +128,7 @@ export function CardProduct() {
                     variant="text"
                     size="lg"
                     ref={prevRef}
-                    className="!absolute top-2/4 left-[-2rem] -translate-y-2/4 z-[60] p-2 bg-white/70 hover:bg-white border shadow-md rounded-full hidden lg:block"
+                    className="!absolute top-2/4 left-[-2rem] -translate-y-2/4 z-[0] p-2 bg-white/70 hover:bg-white border shadow-md rounded-full hidden lg:block"
                 >
                     <CaretLeftFill className="w-6 h-6 text-gray-800" />
                 </Button>
@@ -137,7 +137,7 @@ export function CardProduct() {
                     variant="text"
                     size="lg"
                     ref={nextRef}
-                    className="!absolute top-2/4 right-[-2rem] -translate-y-2/4 z-[60] p-2 bg-white/70 hover:bg-white border shadow-md rounded-full hidden lg:block"
+                    className="!absolute top-2/4 right-[-2rem] -translate-y-2/4 z-[0] p-2 bg-white/70 hover:bg-white border shadow-md rounded-full hidden lg:block"
                 >
                     <CaretRightFill className="w-6 h-6 text-gray-800" />
                 </Button>

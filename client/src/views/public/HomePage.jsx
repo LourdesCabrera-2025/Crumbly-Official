@@ -4,6 +4,7 @@ import Orderbox from "../../assets/public/HomePage/Orderbox.jpg";
 import Macarons from "../../assets/public/HomePage/macaronsPackage.jpg";
 import { LeafFill, Truck, Boxes } from "react-bootstrap-icons";
 import Cards from "../../components/public/card.jsx";
+import Customers from "../../components/public/customers.jsx";
 function HomePage() {
   return (
     <>
@@ -44,6 +45,16 @@ function HomePage() {
           <h1 className="title">Our Best-Selling Products</h1>
         </div>
           <Cards />
+      </div>
+      <hr className="border-line3" />
+      <div className="Hero-section-customers">
+        <div className="container-title">
+          <h1 className="title !mt-2">Our Customers</h1>
+        </div>
+        <div className="container-costumers !mt-16">
+
+          <Customers />
+        </div>
       </div>
     </>
   );

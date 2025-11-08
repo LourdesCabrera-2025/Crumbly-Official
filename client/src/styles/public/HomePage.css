@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Potta+One&display=swap');
 
 * {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -15,7 +15,6 @@ body,
   padding: 0;
   @apply w-full min-h-screen;
 }
-
 
 .hero-section {
   position: absolute;
@@ -41,14 +40,14 @@ body,
   border: none;
   background: transparent;
   width: 100%;
-  @apply  border-t border-gray-400/80;
+  @apply border-t border-gray-400/80;
 }
 
 .border-line2 {
   position: absolute;
   top: 194vh;
   left: 0;
-  border:none;
+  border: none;
   background: transparent;
   width: 100%;
   @apply border-t border-gray-400/80;
@@ -57,7 +56,6 @@ body,
 .spacer {
   @apply w-full h-screen;
 }
-
 
 .section-brand {
   padding-top: 2rem;
@@ -71,25 +69,26 @@ body,
   margin-left: 3rem;
 }
 
-#section-image{
+#section-image {
   margin-right: 3rem;
 }
 
 .title {
   font-family: "Potta One", cursive;
-  font-size: 25pt;
+  font-size: clamp(18pt, 2vw, 25pt);
   text-align: center;
-  
 }
 
-.body-info , ul{
+.body-info,
+ul {
   font-family: "Gentium Plus";
-  font-size: 19pt;
+  font-size: clamp(12pt, 1.8vw, 19pt);
   text-align: start;
   padding-top: 2rem;
 }
 
-li, .icon {
+li,
+.icon {
   display: flex;
   align-items: center;
   font-family: "Gentium Plus";
@@ -99,7 +98,7 @@ li, .icon {
   margin-right: 1rem;
 }
 
-#Leaf{
+#Leaf {
   color: green;
 }
 
@@ -115,9 +114,8 @@ li, .icon {
   margin-top: 6rem;
 }
 
+/* === MOBILE === */
 @media (max-width: 768px) {
-
-
   .hero-section {
     position: absolute;
     top: 0;
@@ -129,20 +127,19 @@ li, .icon {
     z-index: 1;
   }
 
- 
   .hero-image {
     position: relative;
     width: 100%;
     height: 100%;
-    object-fit: contain; 
+    object-fit: contain;
     object-position: center;
   }
 
-
   .spacer {
-    height: 45vh; 
+    height: 45vh;
     width: 100%;
   }
+
   .border-line {
     top: 50vh;
   }
@@ -157,12 +154,10 @@ li, .icon {
     gap: 1.5rem;
     margin-top: 1rem;
     padding: 1rem;
-
   }
 
   #Section-image {
     width: 100%;
-    
   }
 
   .section-info {
@@ -172,7 +167,7 @@ li, .icon {
   }
 
   .section-info .title {
-    font-size: 22pt;
+    font-size: 20pt;
     line-height: 1.3;
     text-align: start;
   }
@@ -202,5 +197,54 @@ li, .icon {
 
   .section-info .icon {
     font-size: 18pt;
+  }
+}
+
+/* === TABLETS GRANDES (iPads horizontales, 900–1200px) === */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .hero-section {
+    height: 90vh;
+  }
+
+  .section-brand {
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .section-info {
+    margin: 0 auto;
+    width: 85%;
+  }
+
+  .title {
+    font-size: clamp(20pt, 2.5vw, 26pt);
+  }
+
+  .body-info {
+    font-size: clamp(14pt, 1.6vw, 18pt);
+  }
+}
+
+/* === PANTALLAS GRANDES (monitores y 4K) === */
+@media (min-width: 1600px) {
+  .hero-section {
+    height: 100vh;
+  }
+
+  .title {
+    font-size: clamp(28pt, 1.8vw, 40pt);
+  }
+
+  .body-info {
+    font-size: clamp(20pt, 1.5vw, 28pt);
+  }
+
+  .section-info {
+    margin-left: 10rem;
+  }
+
+  #section-image {
+    margin-right: 10rem;
   }
 }
