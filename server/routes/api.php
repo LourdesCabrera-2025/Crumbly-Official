@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EstadoProductoController;
+use App\Http\Controllers\DireccionController;
+use App\Http\Controllers\DetallePedidoController;
 
 // Rutas de Productos
 Route::get('/productos', [ProductoController::class, 'index']);
@@ -27,3 +29,17 @@ Route::get('/estados-producto/{id}', [EstadoProductoController::class, 'show']);
 Route::post('/estados-producto', [EstadoProductoController::class, 'store']);
 Route::put('/estados-producto/{id}', [EstadoProductoController::class, 'update']);
 Route::delete('/estados-producto/{id}', [EstadoProductoController::class, 'destroy']);
+
+// Rutas de Direcciones
+Route::get('/direcciones', [DireccionController::class, 'index']);
+Route::get('/direcciones/{id}', [DireccionController::class, 'show']);
+Route::post('/direcciones', [DireccionController::class, 'store']);
+Route::put('/direcciones/{id}', [DireccionController::class, 'update']);
+Route::delete('/direcciones/{id}', [DireccionController::class, 'destroy']);
+
+// Rutas de Detalles de Pedido
+Route::get('/detalles-pedido', [DetallePedidoController::class, 'index']);
+Route::get('/detalles-pedido/{id}', [DetallePedidoController::class, 'show']);
+Route::post('/detalles-pedido', [DetallePedidoController::class, 'store']);
+Route::put('/detalles-pedido/{id}', [DetallePedidoController::class, 'update']);
+Route::delete('/detalles-pedido/{id}', [DetallePedidoController::class, 'destroy']);
