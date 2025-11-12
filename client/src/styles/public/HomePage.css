@@ -53,6 +53,16 @@ body,
   @apply border-t border-gray-400/80;
 }
 
+.border-line3 {
+  position: absolute;
+  top: 299vh;
+  left:0;
+  border:none;
+  background: transparent;
+  width: 100%;
+  @apply border-t border-gray-400/80;
+}
+
 .spacer {
   @apply w-full h-screen;
 }

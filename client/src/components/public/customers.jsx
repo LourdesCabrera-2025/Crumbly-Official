@@ -1,94 +1,64 @@
-import React, { useState, useEffect } from "react";
-import {
-  Card,
-  CardBody,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
+import React from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {EffectCards} from "swiper/modules";
 
-export default function Customers() {
-  const [testimonials, setTestimonials] = useState([]);
-  const [page, setPage] = useState(1); // para paginación o batch loading
-  const [loading, setLoading] = useState(false);
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "../../styles/public/Customers.css";
 
-  // 🔹 Cargar datos iniciales
-  useEffect(() => {
-    fetchTestimonials(page);
-  }, []);
+export function CustomersReview() {
+    const reviews = [
+        {
+            id: 1,
+            name: "Brad Cooper",
+            img: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+            text:"The tiramisu is simply spectacular, creamy and with the perfect balance of coffe and cocoa",
+        },
+        {
+            id: 2,
+            name: "Barbara Blace",
+            img: "https://images.unsplash.com/photo-1610637761528-aef85c9cff02?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+            text: "The pecan pie reminded me of family gatherings, crispy and sweet to perfection",
+        },
+        {
+            id: 3,
+            name: "Karina Gutierrez",
+            img: "https://plus.unsplash.com/premium_photo-1675797367247-6ed7cc60f8d0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=687",
+            text: "Me encanta la calidad y presentación de los postres, se nota que estan hechos con dedicación y amor",
+        },
+        {
+            id: 4,
+            name: "Aimee Carbajal",
+            img: "https://images.unsplash.com/photo-1565985116398-66f7206fd62e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1144",
+            text: "Los macarons fueron un verdadero deleite, delicados y con un sabor que sorprende en cada mordida"
+        },
+    ];
 
-  // 🔹 Función para traer más datos desde la API
-  const fetchTestimonials = async (pageNumber) => {
-    try {
-      setLoading(true);
+    return (
+        <section className="flex flex-col items-center justify-center py-10 bg-gray-50">
+            <Swiper
+            effect={"cards"}
+            grabCursor={true}
+            modules={[EffectCards]}
+            loop={true}
+            className="mySwiper w-[300px] h-[500px]"
+            >
+                {reviews.map((reviews) => (
+                    <SwiperSlide key={reviews.id}
+                    className="flex flex-col justify-center items-center bg-white rounded-2xl shadow-lg p-6 text-start ">
+                        <img 
+                        src={reviews.img}
+                        alt={reviews.name}
+                        className="w-full h-80  object-cover mb-4"
+                        />
+                        <h3 className="font-semibold text-lg !ml-3 !mt-3">{reviews.name}</h3>
+                        <p className="text-gray-700 text-sm italic !ml-3 !mr-3 !mt-2">{reviews.text}</p>
+                    </SwiperSlide>
+                ))}
 
-      // Ejemplo de llamada a API (ajusta URL)
-      const response = await fetch(`/api/testimonials?page=${pageNumber}`);
-      const data = await response.json();
-
-      // Agrega los nuevos resultados al final del array actual
-      setTestimonials((prev) => [...prev, ...data]);
-
-      setLoading(false);
-    } catch (error) {
-      console.error("Error al cargar testimonios:", error);
-      setLoading(false);
-    }
-  };
-
-  // 🔹 Manejador del botón "View More"
-  const handleViewMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    fetchTestimonials(nextPage);
-  };
-
-  return (
-    <section className="w-full py-12 flex flex-col items-center bg-[#f9fafb]">
-
-
-      {/* 🔹 Renderizar cards */}
-      <div className="flex flex-wrap justify-center gap-6 w-full max-w-7xl px-4">
-        {testimonials.map((item, index) => (
-          <Card
-            key={index}
-            shadow={true}
-            className="flex flex-row items-start w-full md:w-[32%] rounded-2xl overflow-hidden bg-white hover:shadow-lg transition-all duration-300"
-          >
-            <img
-              src={item.img}
-              alt={item.name}
-              className="h-40 w-32 object-cover rounded-l-2xl"
-            />
-            <CardBody className="p-6 text-start">
-              <Typography
-                variant="h5"
-                className="font-bold text-gray-900 mb-2"
-                style={{ fontFamily: "'Gentium Plus', serif" }}
-              >
-                {item.name}
-              </Typography>
-              <Typography
-                className="text-gray-700 italic leading-relaxed text-base"
-                style={{ fontFamily: "'Gentium Plus', serif" }}
-              >
-                {item.text}
-              </Typography>
-              <div className="mt-2 h-[3px] w-16 bg-[#f3a694] rounded-full"></div>
-            </CardBody>
-          </Card>
-        ))}
-      </div>
-
-      {/* 🔹 Botón para cargar más */}
-      <Button
-        variant="filled"
-        color="pink"
-        className="mt-8 rounded-full px-6 py-2 bg-[#eeb3b6] hover:bg-[#e59ca0] text-white shadow-md"
-        onClick={handleViewMore}
-        disabled={loading}
-      >
-        {loading ? "Loading..." : "View More"}
-      </Button>
-    </section>
-  );
+            </Swiper>
+        </section>
+    );
 }
+
+export default CustomersReview
