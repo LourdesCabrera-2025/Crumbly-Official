@@ -124,6 +124,43 @@ li,
   margin-top: 6rem;
 }
 
+.image-footer {
+width: 100vw;
+height: 100vh;
+object-fit: cover;
+object-position: center;
+display: block;
+margin: 0;
+padding: 0;
+position: relative;
+}
+
+#text-footer {
+  font-family: "Potta One", cursive;
+  font-size: 25pt;
+}
+
+#subtext-footer {
+  font-family: "Gestium Plus", serif;
+}
+
+
+.btn__footer {
+  font-family: "Potta One", cursive;
+  font-size: 10pt;
+  background-color: #C9A66B;
+  width: 13rem;
+  height: 3rem;
+  border-top-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.btn__footer:hover {
+  background-color: #C7A77B;
+}
+
 /* === MOBILE === */
 @media (max-width: 768px) {
   .hero-section {
