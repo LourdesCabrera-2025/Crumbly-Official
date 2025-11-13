@@ -48,14 +48,14 @@
 }
 
 .nav-item {
-    @apply flex items-center gap-2 text-[#331F10] hover:text-orange-600 transition;
+    @apply flex items-center gap-2 text-[#331F10] transition;
     font-size: 15px;
     position: relative;
     z-index: 10;
 }
 
 .dropdown-btn {
-    @apply flex items-center gap-1 text-[#331F10] hover:text-orange-600 transition;
+    @apply flex items-center gap-1 text-[#331F10]  transition;
 }
 
 .dropdown-icon {
@@ -120,7 +120,7 @@
 
 
 .mobile-item {
-    @apply flex items-center gap-3 text-[#331F10] hover:text-orange-600 transition;
+    @apply flex items-center gap-3 text-[#331F10] transition;
     font-family: "Gentium Plus", serif;
     font-size: 16px;
     margin-top: 1rem;
@@ -130,6 +130,11 @@
 #btn-mobile {
     margin-top: 1rem;
     width: 100%;
+}
+
+#container-dropdown {
+    margin-top: 2rem;
+    height: 50px;
 }
 @keyframes slideDown {
     0% {

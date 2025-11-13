@@ -41,7 +41,7 @@ export function CustomersReview() {
             grabCursor={true}
             modules={[EffectCards]}
             loop={true}
-            className="mySwiper w-[300px] h-[500px]"
+            className="mySwiper w-[350px] h-[500px]"
             >
                 {reviews.map((reviews) => (
                     <SwiperSlide key={reviews.id}

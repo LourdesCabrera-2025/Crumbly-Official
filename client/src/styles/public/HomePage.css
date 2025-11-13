@@ -104,6 +104,8 @@ li,
   font-family: "Gentium Plus";
 }
 
+
+
 .icon {
   margin-right: 1rem;
 }
@@ -159,6 +161,17 @@ position: relative;
 
 .btn__footer:hover {
   background-color: #C7A77B;
+}
+
+#pib {
+  font-family: "Gentium Plus", serif;
+}
+
+#pib:hover {
+  color: #C77452;
+}
+#type-log {
+  font-family: "Potta One", cursive;
 }
 
 /* === MOBILE === */

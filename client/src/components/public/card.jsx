@@ -110,11 +110,10 @@ export function CardProduct() {
                                         </Typography>
                                     </div>
                                 </CardBody>
-                                <CardFooter className="pt-0 items-center !mt-6 !mb-6">
+                                <CardFooter className="pt-0 flex justify-center px-4 pb-6 !mt-6 !mb-6">
                                     <Button 
                                     ripple={false}
-                                    fullWidth
-                                    className="bg-[#E90064]/95 hover:bg-[#D80074] text-white shadow-none cursor-pointer"
+                                    className="bg-[#E90064]/95 hover:bg-[#D80074] text-white shadow-none cursor-pointer items-center"
                                     id="btn-card">
                                         View Detail
                                     </Button>

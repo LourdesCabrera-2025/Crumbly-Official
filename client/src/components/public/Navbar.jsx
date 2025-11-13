@@ -59,16 +59,18 @@ function StickyNavbar() {
                         <AnimatePresence>
                             {isMenuOpen && (
                                 <motion.div
-                                    initial={{ scaleY: 0, opacity: 0 }}
-                                    animate={{ scaleY: 1, opacity: 1 }}
-                                    exit={{ scaleY: 0, opacity: 0 }}
-                                    transition={{ duration: 0.25, ease: "easeOut" }}
-                                    className="absolute top-full left-0 mt-2 bg-white rounded-md shadow-md origin-top overflow-hidden z-50"
+                                    initial={{opacity:0 , scale: 0.95, y: -5 }}
+                                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                                    exit={{ opacity:0, scale: 0.95, y:-5 }}
+                                    transition={{ duration: 0.18, ease: "easeOut" }}
+                                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3
+                                     bg-white rounded-xl shadow-lg  overflow-hidden z-50 w-40"
+                                    id="container-dropdown"
                                 >
-                                    <p className="hover:bg-gray-100 px-4 py-2 cursor-pointer">
+                                    <p className="hover:bg-gray-100 px-4 py-2 cursor-pointer" id="container-options">
                                         Ofertas
                                     </p>
-                                    <p className="hover:bg-gray-100 px-4 py-2 cursor-pointer">
+                                    <p className="hover:bg-gray-100 px-4 py-2 cursor-pointer" id="container-options">
                                         Catálogo
                                     </p>
                                 </motion.div>
