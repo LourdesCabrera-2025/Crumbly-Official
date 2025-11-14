@@ -24,7 +24,7 @@ class MetodoPagoController extends Controller
             // Captura cualquier error inesperado
             return response()->json([
                 'success' => false,
-                'message' => 'Error al obtener los métodos de pago',
+                'message' => 'Error al obtener los metodos de pago',
                 'error' => $e->getMessage()
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
@@ -47,14 +47,14 @@ class MetodoPagoController extends Controller
             // Si el ID no existe
             return response()->json([
                 'success' => false,
-                'message' => 'Método de pago no encontrado'
+                'message' => 'Metodo de pago no encontrado'
             ], Response::HTTP_NOT_FOUND);
 
         } catch (\Exception $e) {
             // Si ocurre otro tipo de error
             return response()->json([
                 'success' => false,
-                'message' => 'Error al obtener el método de pago',
+                'message' => 'Error al obtener el metodo de pago',
                 'error' => $e->getMessage()
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
