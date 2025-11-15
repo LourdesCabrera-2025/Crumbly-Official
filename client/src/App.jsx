@@ -1,11 +1,20 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
+
 import HomePage from "./views/public/HomePage.jsx";
+import CreateAccount from "./views/public/CreateAccount.jsx";
+
 function App() {
   return (
     <ThemeProvider>
-      <HomePage />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/createAccount" element={<CreateAccount />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }
-export default App
+
+export default App;

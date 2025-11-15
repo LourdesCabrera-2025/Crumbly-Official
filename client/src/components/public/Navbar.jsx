@@ -10,13 +10,14 @@ import {
 } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import "../../styles/public/Navbar.css";
+import { useNavigate } from "react-router-dom";
 
 function StickyNavbar() {
     const [scrolled, setScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isMobileDropdownOpen, setIsMobileDropdownOpen] = useState(false);
-
+    const navigate = useNavigate();
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 10);
         window.addEventListener("scroll", handleScroll);
@@ -88,10 +89,10 @@ function StickyNavbar() {
 
                 {/* --- RIGHT MENU (Desktop) --- */}
                 <div className="navbar-right hidden md:flex">
-                    <button className="btn-login">
+                    <button className="btn-login" >
                         Log In <UserIcon className="icon-button" />
                     </button>
-                    <button className="btn-signup">
+                    <button className="btn-signup" onClick={() => navigate("/createAccount")}>
                         Sign Up <UserPlusIcon className="icon-button" />
                     </button>
                 </div>
@@ -164,7 +165,7 @@ function StickyNavbar() {
                             <button className="btn-login w-full">
                                 Log In <UserIcon className="icon-button" />
                             </button>
-                            <button className="btn-signup w-full">
+                            <button className="btn-signup w-full" onClick={() => navigate("/createAccount")}>
                                 Sign Up <UserPlusIcon className="icon-button" />
                             </button>
                         </div>
