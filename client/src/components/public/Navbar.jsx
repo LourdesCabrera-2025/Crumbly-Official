@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; //enlazar vistas
 import {
     HomeIcon,
     ShoppingBagIcon,
@@ -10,6 +11,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { AnimatePresence, motion } from "framer-motion";
 import "../../styles/public/Navbar.css";
+import GoogleLoginButton from "./ui/GoogleLoginButton"; //Eliminar
 
 function StickyNavbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -85,12 +87,21 @@ function StickyNavbar() {
 
                 {/* --- LOGO --- */}
                 <h1 className="logo">CRUMBLY</h1>
-
                 {/* --- RIGHT MENU (Desktop) --- */}
                 <div className="navbar-right hidden md:flex">
                     <button className="btn-login">
                         Log In <UserIcon className="icon-button" />
                     </button>
+
+                    {/*----------BOTON DE GOOGLE TESTEO-------------*/}
+                    <button className="btn-login">
+                        <GoogleLoginButton/>
+                    </button>
+                    <Link to="/access-test" className="mobile-item">
+                        test access
+                    </Link>
+                    {/*---Fin de bloque de muestra (borrar en version final)-----*/}
+
                     <button className="btn-signup">
                         Sign Up <UserPlusIcon className="icon-button" />
                     </button>
