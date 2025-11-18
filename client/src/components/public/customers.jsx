@@ -35,7 +35,7 @@ export function CustomersReview() {
     ];
 
     return (
-        <section className="flex flex-col items-center justify-center py-10 bg-gray-50">
+        <section className="flex flex-col items-center justify-center py-10">
             <Swiper
             effect={"cards"}
             grabCursor={true}

@@ -89,7 +89,7 @@ function StickyNavbar() {
 
                 {/* --- RIGHT MENU (Desktop) --- */}
                 <div className="navbar-right hidden md:flex">
-                    <button className="btn-login" >
+                    <button className="btn-login" onClick={() => navigate("/loginAccount")} >
                         Log In <UserIcon className="icon-button" />
                     </button>
                     <button className="btn-signup" onClick={() => navigate("/createAccount")}>
@@ -162,7 +162,7 @@ function StickyNavbar() {
                         <hr className="my-2 border-[#A2704D]" />
 
                         <div id="btn-mobile" className="w-full flex flex-col gap-2">
-                            <button className="btn-login w-full">
+                            <button className="btn-login w-full" onClick={() => navigate("/loginAccount")}>
                                 Log In <UserIcon className="icon-button" />
                             </button>
                             <button className="btn-signup w-full" onClick={() => navigate("/createAccount")}>

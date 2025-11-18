@@ -57,7 +57,7 @@ export function CardProduct() {
     const nextRef = useRef(null);
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-50 p-4 ">
+        <div className="flex justify-center items-center min-h-screen p-4 ">
             <div className="relative w-full max-w-[1200px] mx-auto py-4 md:py-8">
                 <Swiper
                     modules={[Navigation]}
