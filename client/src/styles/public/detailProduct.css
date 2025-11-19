@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Gentium+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Potta+One&display=swap');
+
+#container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1600px;
+    margin: 1rem auto;
+    overflow: hidden;
+    min-height: 34rem;
+}
+
+.container-right, .container-left {
+    padding: 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.container-image {
+    margin: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+}
+
+.image-producto {
+    border-radius: 10px;
+}
+
+#ranking {
+    background-color: #F0F0F2;
+    padding: 0.4rem;
+    border: 1px solid rgba(86, 86, 86, 0.5);
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(86, 86, 86, 0.25);
+    font-family: "Gentium Plus", serif;
+    margin-top: 1.8rem;
+}
+
+.options-content {
+    background-color: #F0F0F2;
+    padding: 0.4rem;
+    border: 1px solid rgba(86, 86, 86, 0.5);
+    border-radius: 10px;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 2rem;
+    box-shadow: 0 4px 4px rgba(86, 86, 86, 0.25);
+}
+
+.delivery1,
+.delivery2 {
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4pt;
+    font-family: "Gentium Plus", serif;
+}
+
+.title {
+    font-family: "Potta One", cursive;
+    font-size: 20pt;
+}
+
+.text {
+    align-self: flex-start;
+    font-family: "Gentium Plus", serif;
+}
+
+.product-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5rem;
+    margin: 2rem 3rem;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem 2rem;
+    border-radius: 10lx;
+    border: 1px solid #C9A66B;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.option:hover {
+    border-color: #C9A66B;
+
+}
+
+.option.active {
+    border-color: #C9A66B;
+    background-color: #C9A66B;
+    color: white;
+    font-weight: 200;
+}
+
+.subtext, .legend {
+    font-family: "Gentium Plus", serif;
+    font-size: 11pt;
+}
+
+
+#icon {
+    display: block;
+    margin: 0 auto;
+    width: 28px;
+    height: 28px;
+}
+
+.container-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+}
+.text-label {
+    margin: 0;
+    padding: 0;
+    font-family: "Gentium Plus", serif;
+}
+.quantity-input {
+    width: 80px;
+    padding: 0.4rem;
+    border: 2px solid #C9A66B;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.quantity-input:focus {
+    outline: none;
+    border-color: #8B5E34;
+    box-shadow: 0 0 4px rgba(139, 94, 52, 0.4);
+}
+
+.qty-btn {
+    background: #8B5E34;
+    border: none;
+    padding: 0.4rem 0.7rem;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: whitesmoke;
+    transition: background 0.2 ease;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+
+.btn {
+    background-color: #8B5E34;
+    width: 350px;
+    height: 35px;
+    margin-top: 2.5rem;
+    align-self: flex-start;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+    cursor: pointer;
+}
+
+
+.ous {
+    background: #E1E1E2;
+    border-radius: 5px;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    box-shadow: 0 4px 4px rgba(56,56,56,0.25);
+    gap: 10rem;
+}
+
+.circle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;    
+}
+
+#icons {
+    background: whitesmoke;
+    width: 28pt;
+    height: 28pt;
+    padding: 0.5rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 4px rgba(56, 56, 56, 0.25);
+}
+
+h5 {
+    font-family: "Gentium Plus", serif;
+    font-weight: bold;
+}
+
+.subtext-brand {
+    font-family: "Gentium Plus", serif;
+    font-size: 10pt;
+}
+
+.container-cards {
+    margin-top: 2rem;
+}
+
+.title-card{
+    font-family: "Gentium Plus", serif;
+    font-size: 20pt;
+}
+
+.container-title {
+    background: #E1E1E2;
+    margin-top: 2rem;
+    padding: 0.5rem;
+    font-family: "Gentium Plus", serif;
+    font-size: 15pt;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0 4px 4px rgba(56, 56, 56, 0.25);
+}
+
+.container-text {
+    margin-top: 3rem;
+    padding: 2rem;
+    align-items: center;
+    background: #F0F0F2;
+    border: 2px solid rgba(56, 56, 56, 0.25);
+    box-shadow: 0 4px 4px rgba(56, 56, 56, 0.25);
+    border-radius: 5px;
+}
+
+.rate-use {
+    background: #E1E1E2;
+    margin-top: 3rem;
+    border-radius: 5px;
+    padding: 0.5rem;
+    font-family: "Gentium Plus", serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4rem;
+}
+
+.comments-title {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.titulo-comentario {
+    align-self: flex-start;
+}
+
+.comments-area {
+    width: 100%;
+    padding: 2rem;
+    font-size: 12pt;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    resize: vertical;
+    margin: 2rem;
+}
+
+#text-area {
+     width: 100%;
+    padding: 2rem;
+    font-size: 12pt;
+    border-radius: 6px;
+    resize: vertical;
+    margin-bottom: 2rem;;
+}
+
+#text-area:focus{
+    outline: none;
+    border-color: #DDD;
+    box-shadow: none;
+}
+
+#btn-comment {
+    padding: 0.5rem 5rem;
+    align-self: flex-end;
+    background: #8B5E34;
+    border: none;
+    border-radius: 8px;
+    color: #FFF;
+    cursor: pointer;
+    border-bottom-right-radius: 15px;
+    border-top-left-radius: 15px;
+}

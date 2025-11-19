@@ -6,12 +6,9 @@ body,
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-color: #F0F0F2;
 }
 
-html,
-body {
-    overflow-y: auto;
-}
 
 /* --- Contenedor Principal ---- */
 

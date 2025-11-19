@@ -13,6 +13,7 @@ import { Navigation } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "../../styles/public/cards.css"
+import { useNavigate } from "react-router-dom";
 
 const cardData = [
     {
@@ -55,6 +56,7 @@ const cardData = [
 export function CardProduct() {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
+    const navigate = useNavigate();
 
     return (
         <div className="flex justify-center items-center min-h-screen p-4 ">
@@ -114,7 +116,7 @@ export function CardProduct() {
                                     <Button 
                                     ripple={false}
                                     className="bg-[#E90064]/95 hover:bg-[#D80074] text-white shadow-none cursor-pointer items-center"
-                                    id="btn-card">
+                                    id="btn-card" onClick={() => navigate("/detailProduct")}>
                                         View Detail
                                     </Button>
                                 </CardFooter>
