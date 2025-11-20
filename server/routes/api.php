@@ -43,3 +43,31 @@ Route::get('/detalles-pedido/{id}', [DetallePedidoController::class, 'show']);
 Route::post('/detalles-pedido', [DetallePedidoController::class, 'store']);
 Route::put('/detalles-pedido/{id}', [DetallePedidoController::class, 'update']);
 Route::delete('/detalles-pedido/{id}', [DetallePedidoController::class, 'destroy']);
+
+// Rutas de Estados de Pedido
+Route::get('/estados-pedido', [EstadoPedidoController::class,'index']);
+Route::get('/estados-pedido/{id}', [EstadoPedidoController::class,'show']);
+Route::post('/estados-pedido', [EstadoPedidoController::class,'store']);
+Route::put('/estados-pedido/{id}', [EstadoPedidoController::class,'update']);
+Route::delete('/estados-pedido/{id}', [EstadoPedidoController::class,'destroy']);
+
+// Rutas de Clientes
+Route::get('/clientes', [ClienteController::class, 'index']);
+Route::get('/clientes/{id}', [ClienteController::class, 'show']);
+Route::post('/clientes', [ClienteController::class, 'store']);
+Route::put('/clientes/{id}', [ClienteController::class, 'update']);
+Route::delete('/clientes/{id}', [ClienteController::class, 'destroy']);
+
+// Rutas de Entregas de Pedido
+Route::get('/entregas-pedido', [EntregaPedidoController::class,'index']);
+Route::get('/entregas-pedido/{id}', [EntregaPedidoController::class,'show']);
+Route::post('/entregas-pedido', [EntregaPedidoController::class,'store']);
+Route::put('/entregas-pedido/{id}', [EntregaPedidoController::class,'update']);
+Route::delete('/entregas-pedido/{id}', [EntregaPedidoController::class,'destroy']);
+
+// Rutas de Ofertas
+Route::get('/ofertas', [OfertaController::class, 'index']);
+Route::get('/ofertas/{id}', [OfertaController::class, 'show']);
+Route::post('/ofertas', [OfertaController::class, 'store']);
+Route::put('/ofertas/{id}', [OfertaController::class, 'update']);
+Route::delete('/ofertas/{id}', [OfertaController::class, 'destroy']);
