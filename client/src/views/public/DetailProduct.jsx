@@ -89,7 +89,7 @@ export function detailProduct() {
                         <Button className="qty-btn" onClick={() => setQuantity(prev => prev + 1)}>+</Button>
                         <Button className="qty-btn" onClick={() => setQuantity(prev => Math.max(1, prev - 1))}>-</Button>
                     </div>
-                    <Button className="btn" type="submit"> Añadir al carrito</Button>
+                    <Button className="btn-submit" type="submit"> Añadir al carrito</Button>
                 </div>
             </div>
             <hr className="border-gray-500" />
@@ -121,7 +121,7 @@ export function detailProduct() {
                 <Cards />
             </div>
             <hr className="border-gray-500" />
-            <div className="container-title">
+            <div className="container-titles">
                 <h1>Descipción de Producto</h1>
             </div>
             <div className="container-text">

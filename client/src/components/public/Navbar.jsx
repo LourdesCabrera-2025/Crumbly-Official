@@ -38,7 +38,7 @@ function StickyNavbar() {
     }, []);
 
     return (
-        <nav className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
+        <nav className={`nav ${scrolled ? "navbar--scrolled" : ""}`}>
             <div className="navbar-container">
                 {/* --- LEFT MENU (Desktop) --- */}
                 <div className="navbar-left hidden md:flex">

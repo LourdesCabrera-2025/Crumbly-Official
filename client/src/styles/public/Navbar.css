@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 
-.navbar {
+.nav{
     @apply fixed top-0 left-0 w-full py-0.5 transition-all z-50;
     background-color: transparent ;
     backdrop-filter: blur(2px);
