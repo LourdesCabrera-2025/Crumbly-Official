@@ -8,6 +8,9 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EstadoProductoController;
 use App\Http\Controllers\DireccionController;
 use App\Http\Controllers\DetallePedidoController;
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PagoPedidoController;
+use App\Http\Controllers\MetodoPagoController;
 
 // Rutas de Productos
 Route::get('/productos', [ProductoController::class, 'index']);
@@ -71,3 +74,13 @@ Route::get('/ofertas/{id}', [OfertaController::class, 'show']);
 Route::post('/ofertas', [OfertaController::class, 'store']);
 Route::put('/ofertas/{id}', [OfertaController::class, 'update']);
 Route::delete('/ofertas/{id}', [OfertaController::class, 'destroy']);
+//Pedidos
+Route::apiResource('pedidos', PedidoController::class);
+Route::get('pedidos/cliente/{idCliente}', [PedidoController::class, 'getByCliente']);
+
+//Pagos
+Route::apiResource('pagos', PagoPedidoController::class);
+Route::get('pagos/pedido/{idPedido}', [PagoPedidoController::class, 'getByPedido']);
+
+//Metodos de Pago
+Route::apiResource('metodos-pago', MetodoPagoController::class)->only(['index', 'show']);
