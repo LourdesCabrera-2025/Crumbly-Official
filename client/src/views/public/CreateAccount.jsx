@@ -1,7 +1,8 @@
 import "../../styles/public/sign.css";
 import Shop from "../../assets/public/SignIn/Shop.jpeg";
 import { PersonFill, EnvelopeAtFill, KeyFill, BoxArrowInRight, Google } from "react-bootstrap-icons";
-import { Button } from "@material-tailwind/react"
+import { Button } from "@material-tailwind/react";
+
 export function CreateAccount() {
 
     return (

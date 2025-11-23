@@ -11,15 +11,19 @@ export default withMT({
   ],
   theme: {
     extend: {
-     
+
       colors: {
-        primary: "#1d4ed8",   
+        primary: "#1d4ed8",
         secondary: "#9333ea",
+        badgeRed: "var(--badgeRed)",
+      },
+      fontFamily: {
+        roboto: ['"Roboto Flex"', 'sans-serif'],
       },
     },
   },
   plugins: [
-    require("daisyui"), 
+    require("daisyui"),
   ],
   daisyui: {
     themes: [
@@ -34,6 +38,7 @@ export default withMT({
           success: "#009485",
           warning: "#ff9900",
           error: "#ff5724",
+          badgeRed: "#A60505"
         },
       },
     ],

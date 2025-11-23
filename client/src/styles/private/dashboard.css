@@ -1,7 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Rubik:ital,wght@0,300..900;1,300..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
 
 
 html,
@@ -28,12 +27,21 @@ body,
 }
 
 .li-sidebar {
-
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     font-family: "Inter", sans-serif;
-    font-size: 12pt;
+    font-size: 11pt;
 }
 
+.li-sidebar2 {
+
+    margin-bottom: 0.8rem;
+    font-family: "Inter", sans-serif;
+    font-size: 11pt;
+}
+
+#link-sidebar:hover {
+    background: transparent;
+}
 
 #title-dashboard {
     font-family: "Manrope", sans-serif;
@@ -72,6 +80,7 @@ body,
     border: 2px solid rgba(86, 86, 86, 0.25);
     background: #EBEDF2;
     margin-right: 2rem;
+    margin-left: 0.4rem;
     padding: 1rem;
     width: 3rem;
     height: 3rem;
@@ -87,6 +96,7 @@ body,
 #container-profile-dashboard {
     border: 2px solid rgba(86, 86, 86, 0.25);
     margin-right: 2rem;
+    margin-left: 0.4rem;
     width: 3rem;
     height: 3rem;
 }
@@ -105,10 +115,11 @@ body,
 }
 
 #options-profile {
-    margin-top: 22rem;
+    margin-top: 3.5rem;
     margin-left: 8rem;
     right: 2rem;
     padding: 1rem;
+    align-self: start;
 }
 
 
@@ -121,7 +132,11 @@ body,
     font-size: 10pt;
     margin-bottom: 1rem;
     margin-top: 0.5rem;
+    display: block;
+    width: 100%;
+    align-self: flex-start;
 }
+
 
 #a-option-profile:hover {
     background: transparent !important;
@@ -139,4 +154,78 @@ body,
     font-weight: 100;
     font-style: normal;
     font-size: 10pt;
+}
+
+#title-user{
+    margin-left: 2rem;
+    margin-right: 2rem;
+    font-family: "Manrope", sans-serif;
+    font-size: 20pt;
+    font-weight: 400;
+}
+
+#title-card {
+    align-self: flex-start;
+    margin-top: -2rem;
+    font-family: "Work Sans", sans-serif;
+    font-size: 15pt;
+    font-weight: normal;
+}
+
+.quantity-information {
+    font-family: "Roboto Flex";
+    font-size: 20pt;
+}
+
+.nameDashboard {
+    font-family: "Work Sans", sans-serif;
+    font-size: 20pt;
+    font-weight: 400;
+}
+
+#btn-hover:hover,
+#summary-hover:hover {
+    background: transparent;
+    color: #A200FF;
+}
+
+#btn-hover:focus,
+#summary-hover:focus {
+    outline: none;
+}
+
+#btn-PDF{
+    padding: 1rem;
+    background: rgb(67, 61, 242);
+    color: white;
+    transition: all 1.9 ease-in-out;
+    font-family: "Work Sans", sans-serif;
+}
+
+#btn-PDF:hover {
+    padding: 1rem;
+    background: rgb(67, 61, 242, 0.45);
+    color: black;
+}
+
+#btn-Add {
+    padding: 1rem;
+    background: rgba(59,72,89);
+    color: white;
+    font-family: "Work Sans", sans-serif;
+}
+
+#btn-Add:hover{
+    padding: 1rem;
+    background: rgb(67, 72, 89, 0.4);
+    color: black;
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade {
+  animation: fade 0.2s ease-out;
 }

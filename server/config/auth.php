@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'usuario_firebase',
+        ]
     ],
 
     /*
@@ -60,11 +65,15 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'usuarios_locales' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => env('AUTH_MODEL', App\Models\UsuarioLocal::class),
         ],
 
+        'usuario_firebase' => [
+            'driver'=> 'eloquent',
+            'model' => App\Models\UsuarioFirebase::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

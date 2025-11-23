@@ -1,41 +1,88 @@
 <?php
 
+/**
+ * Created by Reliese Model.
+ */
+
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Producto
+ * 
+ * @property string $id_producto
+ * @property string $nombre
+ * @property string|null $descripcion
+ * @property float $precio
+ * @property int|null $stock
+ * @property int|null $id_categoria
+ * @property string|null $id_admin
+ * @property int|null $id_estado_producto
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ * 
+ * @property Categorium|null $categorium
+ * @property EstadoProducto|null $estado_producto
+ * @property Administrador|null $administrador
+ * @property Collection|DetallePedido[] $detalle_pedidos
+ * @property Collection|Ofertum[] $oferta
+ * @property Collection|Valoracion[] $valoracions
+ *
+ * @package App\Models
+ */
 class Producto extends Model
 {
-    use HasFactory;
+	protected $table = 'producto';
+	protected $primaryKey = 'id_producto';
+	public $incrementing = false;
 
-    protected $table = 'Producto';
-    protected $primaryKey = 'id_producto';
-    public $incrementing = false;
-    public $timestamps = false;
+	protected $casts = [
+		'precio' => 'float',
+		'stock' => 'int',
+		'id_categoria' => 'int',
+		'id_estado_producto' => 'int'
+	];
 
-    protected $fillable = [
-        'nombre', 'descripcion', 'precio', 'stock',
-        'id_categoria', 'id_admin', 'id_estado_producto', 'imagen_producto'
-    ];
+	protected $fillable = [
+		'nombre',
+		'descripcion',
+		'precio',
+		'stock',
+		'id_categoria',
+		'id_admin',
+		'id_estado_producto'
+	];
 
-    public function categoria()
-    {
-        return $this->belongsTo(Categoria:: class, 'id_categoria', 'id_categoria');
-    }
+	public function categorium()
+	{
+		return $this->belongsTo(Categorium::class, 'id_categoria');
+	}
 
-    public function estado() 
-    {
-        return $this->belongsTo(EstadoProducto::class, 'id_estado_producto', 'id_estado_producto');
-    }
+	public function estado_producto()
+	{
+		return $this->belongsTo(EstadoProducto::class, 'id_estado_producto');
+	}
 
-    public function administrador()
-    {
-        return $this->belongsTo(Administrador::class, 'id_admin', 'id_admin');
-    }
+	public function administrador()
+	{
+		return $this->belongsTo(Administrador::class, 'id_admin');
+	}
 
-    public function Ofertas()
-    {
-        return $this->hasMany(Oferta::class, 'id_producto', 'id_producto');
-    }
+	public function detalle_pedidos()
+	{
+		return $this->hasMany(DetallePedido::class, 'id_producto');
+	}
+
+	public function oferta()
+	{
+		return $this->hasMany(Ofertum::class, 'id_producto');
+	}
+
+	public function valoracions()
+	{
+		return $this->hasMany(Valoracion::class, 'id_producto');
+	}
 }
