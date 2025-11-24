@@ -22,6 +22,8 @@ import { useDashboardStates } from "../../hooks/dashboardStates.js";
 import AdminTable from "../../components/private/tabs.jsx";
 import ModalTipoUsuario from "../../components/private/Modals/ModalTipoUsuario.jsx";
 import { getAllTipos, deleteTipoUsuario } from "../../services/nivelesIUsers.service.js";
+import EditBtn from "../../components/private/EditBtn.jsx";
+import DeleteBtn from "../../components/private/DeleteBtn.jsx";
 
 export function NivelesUsuario() {
   const { navigate } = useDashboardStates();
@@ -33,11 +35,11 @@ export function NivelesUsuario() {
   const [modalModo, setModalModo] = useState("crear"); // "crear" | "editar"
   const [tipoSeleccionado, setTipoSeleccionado] = useState(null);
 
-  // Obtener tipos de usuario
+
   const fetchTipos = async () => {
     setLoading(true);
     const result = await getAllTipos();
-    setTipos(result.data); // siempre un array
+    setTipos(result.data); 
     setLoading(false);
   };
 
@@ -45,46 +47,13 @@ export function NivelesUsuario() {
     fetchTipos();
   }, []);
 
-  // Editar
-  const handleEditar = (tipo) => {
-    setTipoSeleccionado(tipo);
-    setModalModo("editar");
-    setModalVisible(true);
-  };
 
-  // Eliminar
-  const handleEliminar = async (id) => {
-    if (confirm("¿Deseas eliminar este tipo de usuario?")) {
-      const result = await deleteTipoUsuario(id);
-      if (result.error) {
-        alert("Error al eliminar el tipo de usuario.");
-      } else {
-        fetchTipos();
-      }
-    }
-  };
 
-  // Columnas de AdminTable
   const columns = [
     { key: "id_tipo_usuario", label: "#" },
     { key: "tipo_usuario", label: "Nivel" },
   ];
 
-  const actions = [
-    ({ row }) => (
-      <button className="btn btn-sm btn-ghost !p-5" onClick={() => handleEditar(row)}>
-        <PencilSquare />
-      </button>
-    ),
-    ({ row }) => (
-      <button
-        className="btn btn-sm btn-error !p-5"
-        onClick={() => handleEliminar(row.id_tipo_usuario)}
-      >
-        <Trash />
-      </button>
-    ),
-  ];
   return (
     <>
       <div className="drawer lg:drawer-open fixed top-0 left-0 ">
@@ -223,20 +192,33 @@ export function NivelesUsuario() {
               </button>
             </div>
 
-            <div className="!p-4">
+            <div className="!p-4 overflow-y-auto">
               {loading ? (
                 <p>Cargando tipos de usuario...</p>
               ) : (
-                <AdminTable columns={columns} data={tipos} actions={actions} />
+                <AdminTable 
+                columns={columns} 
+                data={tipos} 
+                actions={[(row) => (<DeleteBtn row={row} deleteFunction={(r) => deleteTipoUsuario(r.id_tipo_usuario)} itemNameKey="tipo_usuario"/>),
+                  (row) => (<EditBtn  row={row}    setTipoSeleccionado={setTipoSeleccionado}    setModalModo={setModalModo}  setModalVisible={setModalVisible} />)
+                ]}
+                 />
               )}
             </div>
           </div>
         </div>
 
         {/* Sidebar completo con todas las rutas */}
-        <div className="drawer-side is-drawer-close:overflow-visible z-50">
-          <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-          <div className="flex min-h-full flex-col items-start bg-[#EBEDF2] is-drawer-close:w-16 is-drawer-open:w-64 is-drawer-open:gap-1">
+        <div className="drawer-side is-drawer-close:overflow-visible z-50 ">
+          <label
+            htmlFor="my-drawer-4"
+            aria-label="close sidebar"
+            className="drawer-overlay"
+          ></label>
+          <div
+            className="flex min-h-full flex-col items-start bg-[#EBEDF2]
+          is-drawer-close:w-16 is-drawer-open:w-64 is-drawer-open:gap-1"
+          >
             <div className="!p-4 is-drawer-close:!hidden is-drawer-open:w-full">
               <h1 className="menu-title">CRUMBLY</h1>
             </div>
@@ -252,35 +234,55 @@ export function NivelesUsuario() {
                   onClick={() => navigate("/private/administradores")}
                 >
                   <PersonFill className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                  <span className="is-drawer-close:hidden flex-1 text-left pl-2">Administradores</span>
+                  <span className="is-drawer-close:hidden flex-1 text-left pl-2 ">
+                    Administradores
+                  </span>
                 </button>
               </li>
 
               {/* Usuarios */}
               <li className="li-sidebar">
-                <details className="w-full overflow-visible">
+                <details className="w-full overflow-visible ">
                   <summary
                     className="flex items-center justify-start w-full gap-3 p-3 rounded-md transition-all duration-200 cursor-pointer
-                               is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
-                               is-drawer-close:tooltip is-drawer-close:tooltip-right"
+        is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
+        is-drawer-close:tooltip is-drawer-close:tooltip-right"
                     data-tip="Usuarios"
                     id="summary-hover"
                   >
                     <PersonFillGear className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">Usuarios</span>
+                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">
+                      Usuarios
+                    </span>
                   </summary>
-                  <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-2">
+                  <ul className=" is-drawer-close:!hidden !pl-2 fle flex-col gap-2  ">
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/clientes")} id="link-sidebar">Clientes</a>
+                      <a
+                        onClick={() => navigate("/private/usuarios/clientes")}
+                        className="w-full"
+                        id="link-sidebar"
+                      >
+                        Clientes
+                      </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/usuarios-locales")} id="link-sidebar">Usuarios locales</a>
+                      <a
+                        onClick={() => navigate("/private/usuarios/usuario-local")}
+                        className="w-full"
+                        id="link-sidebar"
+                      >
+                        Usuarios locales
+                      </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/usuarios-firebase")} id="link-sidebar">Usuarios Firebase</a>
+                      <a  onClick={() => navigate("/private/usuarios/usuarios-firebase")} className="w-full" id="link-sidebar">
+                        Usuarios Firebase
+                      </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/niveles-usuario")} id="link-sidebar">Niveles de usuario</a>
+                      <a onClick={() => navigate("/private/usuarios/niveles-usuario")} className="w-full" id="link-sidebar">
+                        Niveles de usuario
+                      </a>
                     </li>
                   </ul>
                 </details>
@@ -291,20 +293,43 @@ export function NivelesUsuario() {
                 <details className="w-full overflow-visible">
                   <summary
                     className="flex items-center justify-start w-full gap-3 p-3 rounded-md transition-all duration-200
-                               is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
-                               is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                              is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
+                              is-drawer-close:tooltip is-drawer-close:tooltip-right
+                              is-drawer-close:hidden"
                     data-tip="Productos"
                     id="summary-hover"
                   >
                     <BoxSeamFill className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">Productos</span>
+                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">
+                      Productos
+                    </span>
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-1">
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Productos</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Estado Producto</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Categorias</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Ofertas</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Valoraciones</a></li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/productos")} className="w-full" id="link-sidebar">
+                        Productos
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/productos/estado-producto")} className="w-full" id="link-sidebar">
+                        Estado Producto
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/productos/categorias")} className="w-full" id="link-sidebar">
+                        Categorias
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/productos/ofertas")} className="w-full" id="link-sidebar">
+                        Ofertas
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/productos/valoraciones")} className="w-full" id="link-sidebar">
+                        Valoraciones
+                      </a>
+                    </li>
                   </ul>
                 </details>
               </li>
@@ -314,57 +339,100 @@ export function NivelesUsuario() {
                 <details className="w-full overflow-visible">
                   <summary
                     className="flex items-center justify-start w-full gap-3 p-3 rounded-md transition-all duration-200
-                               is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
-                               is-drawer-close:tooltip is-drawer-close:tooltip-right"
+                              is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
+                              is-drawer-close:tooltip is-drawer-close:tooltip-right
+                              is-drawer-close:hidden"
                     data-tip="Pedidos"
                     id="summary-hover"
                   >
                     <UiChecks className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">Pedidos</span>
+                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">
+                      Pedidos
+                    </span>
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-3">
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Lista de pedidos</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Detalle de Pedidos</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Estado del pedido</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Métodos de pago</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Entrega</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Pagos</a></li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos")} className="w-full" id="link-sidebar">
+                        Lista de pedidos
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos/detalle-pedido")} className="w-full" id="link-sidebar">
+                        Detalle de Pedidos
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos/estado-pedido")} className="w-full" id="link-sidebar">
+                        Estado del pedido
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos/metodo-de-pago")} className="w-full" id="link-sidebar">
+                        Métodos de pago
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos/entregas")} className="w-full" id="link-sidebar">
+                        Entrega
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/pedidos/pagos")} className="w-full" id="link-sidebar">
+                        Pagos
+                      </a>
+                    </li>
                   </ul>
                 </details>
               </li>
 
-              {/* Ubicaciones */}
+              
               <li className="li-sidebar">
                 <details className="w-full overflow-visible">
                   <summary
                     className="flex items-center justify-start w-full gap-3 p-3 rounded-md transition-all duration-200
-                               is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
-                               is-drawer-close:tooltip is-drawer-close:tooltip-right"
-                    data-tip="Ubicaciones"
+                              is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
+                              is-drawer-close:tooltip is-drawer-close:tooltip-right
+                              is-drawer-close:hidden"
+                    data-tip="Pedidos"
                     id="summary-hover"
                   >
                     <GeoFill className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">Ubicaciones</span>
+                    <span className="flex-1 text-left pl-2 is-drawer-close:hidden">
+                      Ubicaciones
+                    </span>
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-3">
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Direcciones</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Departamento</a></li>
-                    <li className="li-sidebar2"><a href="#" id="link-sidebar">Municipios</a></li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-direcciones")} className="w-full" id="link-sidebar">
+                        Direcciones
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-departamentos")} className="w-full" id="link-sidebar">
+                        Departamento
+                      </a>
+                    </li>
+                    <li className="li-sidebar2">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-municipios")} className="w-full" id="link-sidebar">
+                        Municipios
+                      </a>
+                    </li>
                   </ul>
                 </details>
               </li>
 
-              {/* Actividad */}
               <li className="li-sidebar">
                 <button
                   className="flex items-center justify-start w-full gap-3 p-3 rounded-md transition-all duration-200
                            is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
                            is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="Actividad"
-                  id="btn-hover"
+                  id="btn-hover" onClick={() => navigate("/private/usuarios/actividad-usuarios")}
                 >
                   <ListNested className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
-                  <span className="is-drawer-close:hidden flex-1 text-left pl-2">Actividad</span>
+                  <span className="is-drawer-close:hidden flex-1 text-left pl-2">
+                    Actividad
+                  </span>
                 </button>
               </li>
             </ul>

@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $nombre
  * @property string $apellido
  * @property string $email
+ * @property string|null $image_cliente
  * @property int|null $id_metodo
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -24,6 +25,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property MetodoPago|null $metodo_pago
  * @property Collection|Direccion[] $direccions
  * @property Collection|Pedido[] $pedidos
+ * @property Collection|UsuarioFirebase[] $usuario_firebases
+ * @property Collection|UsuarioLocal[] $usuario_locals
  * @property Collection|Valoracion[] $valoracions
  *
  * @package App\Models
@@ -42,6 +45,7 @@ class Cliente extends Model
 		'nombre',
 		'apellido',
 		'email',
+		'image_cliente',
 		'id_metodo'
 	];
 
@@ -58,6 +62,16 @@ class Cliente extends Model
 	public function pedidos()
 	{
 		return $this->hasMany(Pedido::class, 'id_cliente');
+	}
+
+	public function usuario_firebases()
+	{
+		return $this->hasMany(UsuarioFirebase::class, 'id_cliente');
+	}
+
+	public function usuario_locals()
+	{
+		return $this->hasMany(UsuarioLocal::class, 'id_cliente');
 	}
 
 	public function valoracions()

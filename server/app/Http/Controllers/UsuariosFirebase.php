@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\UsuarioFirebase;
 use Illuminate\Http\Request;
 
@@ -32,18 +33,5 @@ class UsuariosFirebase extends Controller
         $usuarioFirebase = UsuarioFirebase::where('display_name', 'LIKE', "%$display_name%")
         ->get();
         return response()->json($usuarioFirebase);
-    }
-
-    /**
-     * Descripción: 
-     */
-    public function destroy($id_usuario_firebase)
-    {
-        $usuarioFirebase = UsuarioFirebase::findOrFail($id_usuario_firebase);
-        $usuarioFirebase->delete();
-        return response()->json([
-            'message' => 'Usuario Firebase eliminado correctamente',
-            'id_eliminado' => $id_usuario_firebase,
-        ]);
     }
 }

@@ -3,16 +3,16 @@ import React from "react";
 
 export function AdminTable({ columns = [], data = [], actions = null }) {
   return (
-    <div className="overflow-x-auto rounded-xl shadow-sm border border-gray-200 bg-white">
-      <table className="table text-gray-700 w-full">
+    <div className="max-h-96 overflow-y-auto rounded-xl shadow-sm border border-gray-200 bg-white">
+      <table className="table text-gray-700 w-full ">
 
         {/* HEAD */}
-        <thead className="text-gray-700 border-b border-gray-200">
+        <thead className="sticky top-0 bg-white text-gray-700 border-b border-gray-200">
           <tr className="contenedor-tabla">
             {columns.map((col, index) => (
               <th
                 key={index}
-                className="font-semibold text-sm !px-5 !py-4 whitespace-nowrap"
+                className="font-semibold text-sm !px-5 !py-4 whitespace-nowrap "
               >
                 {col.label}
               </th>
@@ -28,7 +28,7 @@ export function AdminTable({ columns = [], data = [], actions = null }) {
         </thead>
 
         {/* BODY */}
-        <tbody className="bg-white">
+        <tbody className="bg-white max-h-96 overflow-y-auto">
           {data.length === 0 ? (
             <tr>
               <td

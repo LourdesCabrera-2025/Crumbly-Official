@@ -1,69 +1,54 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;;
 
-/**
- * Class UsuarioLocal
- * 
- * @property int $id_usuario_local
- * @property string $username
- * @property string $email
- * @property string $password
- * @property string|null $token
- * @property int|null $id_tipo_usuario
- * @property Carbon $created_at
- * @property Carbon $updated_at
- * @property string|null $id_cliente
- * 
- * @property Cliente|null $cliente
- * @property TipoUsuario|null $tipo_usuario
- * @property Collection|Administrador[] $administradors
- *
- * @package App\Models
- */
-class UsuarioLocal extends Model
+class UsuarioLocal extends Model implements MustVerifyEmail
 {
-	protected $table = 'usuario_local';
-	protected $primaryKey = 'id_usuario_local';
+	 use HasApiTokens, MustVerifyEmailTrait; 
 
-	protected $casts = [
-		'id_tipo_usuario' => 'int'
-	];
+    protected $table = 'usuario_local';
+    
+    protected $primaryKey = 'id_usuario_local';
 
-	protected $hidden = [
-		'password',
-		'token'
-	];
+    protected $hidden = [
+        'password',
+        'token'
+    ];
 
-	protected $fillable = [
-		'username',
-		'email',
-		'password',
-		'token',
-		'id_tipo_usuario',
-		'id_cliente'
-	];
+    protected $fillable = [
+        'username',
+        'email',
+        'password',
+        'token',
+        'id_tipo_usuario',
+        'id_cliente',
+        'id_admin'
+    ];
 
-	public function cliente()
-	{
-		return $this->belongsTo(Cliente::class, 'id_cliente');
-	}
+    protected $casts = [
+        'id_tipo_usuario' => 'integer',
+		'email_verified_at' => 'datetime',
+    ];
 
-	public function tipo_usuario()
-	{
-		return $this->belongsTo(TipoUsuario::class, 'id_tipo_usuario');
-	}
+    public function cliente(): BelongsTo
+    {
+        return $this->belongsTo(Cliente::class, 'id_cliente', 'id_cliente');
+    }
 
-	public function administradors()
-	{
-		return $this->hasMany(Administrador::class, 'id_usuario_local');
-	}
+    public function tipo_usuario(): BelongsTo
+    {
+        return $this->belongsTo(TipoUsuario::class, 'id_tipo_usuario');
+    }
+
+    public function admin(): BelongsTo
+    {
+        return $this->belongsTo(Administrador::class, 'id_admin', 'id_admin');
+    }
 }

@@ -2,48 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\DetallePedido;
 use Illuminate\Http\Request;
 
 class DetalleController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $detalles = DetallePedido::with(['pedido', 'producto'])->get();
+        return response()->json($detalles);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function show($id_detalle)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(DetallePedido $detallePedido)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, DetallePedido $detallePedido)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(DetallePedido $detallePedido)
-    {
-        //
+        $detalle = DetallePedido::with(['pedido', 'producto'])->findOrFail($id_detalle);
+        return response()->json($detalle);
     }
 }

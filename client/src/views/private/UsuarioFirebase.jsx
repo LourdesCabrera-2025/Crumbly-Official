@@ -20,7 +20,6 @@ import { useDashboardStates } from "../../hooks/dashboardStates.js";
 import Tabs from "../../components/private/tabs.jsx";
 import { useEffect, useState } from "react";
 import {
-  getFirebaseUser,
   getFirebaseUsers,
   deleteFirebaseUser,
 } from "../../services/firebaseUsers.service.js";
@@ -41,6 +40,13 @@ export function UsersGoogle() {
 
   const Columns = [
     { label: "ID", key: "id_usuario_firebase" },
+    { label: "imagen" , 
+      image: "photo_url", key: "photo_url", render:(row) =>      
+         <img 
+        src={row.photo_url || '/default-avatar.png'} 
+        alt={`${row.display_name} perfil`} 
+        className="rounded-full  w-12 h-12 object-cover object-center"
+      />},
     { label: "Nombre", key: "display_name" },
     { label: "Email", key: "email" },
     {
@@ -221,7 +227,7 @@ export function UsersGoogle() {
               </button>
             </div>
             <div className="!p-4">
-              <Tabs columns={Columns} data={usuarios} actions={[DeleteBtn]} />
+              <Tabs columns={Columns} data={usuarios} />
             </div>
           </div>
         </div>
@@ -275,7 +281,7 @@ export function UsersGoogle() {
                   <ul className=" is-drawer-close:!hidden !pl-2 fle flex-col gap-2  ">
                     <li className="li-sidebar2">
                       <a
-                        onClick={() => navigate("/private/clientes")}
+                        onClick={() => navigate("/private/usuarios/clientes")}
                         className="w-full"
                         id="link-sidebar"
                       >
@@ -284,7 +290,7 @@ export function UsersGoogle() {
                     </li>
                     <li className="li-sidebar2">
                       <a
-                        onClick={() => navigate("/private/usuarios-locales")}
+                        onClick={() => navigate("/private/usuarios/usuario-local")}
                         className="w-full"
                         id="link-sidebar"
                       >
@@ -292,12 +298,12 @@ export function UsersGoogle() {
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/usuarios-firebase")} className="w-full" id="link-sidebar">
+                      <a  onClick={() => navigate("/private/usuarios/usuarios-firebase")} className="w-full" id="link-sidebar">
                         Usuarios Firebase
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a onClick={() => navigate("/private/niveles-usuario")} className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/usuarios/niveles-usuario")} className="w-full" id="link-sidebar">
                         Niveles de usuario
                       </a>
                     </li>
@@ -323,27 +329,27 @@ export function UsersGoogle() {
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-1">
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/productos")} className="w-full" id="link-sidebar">
                         Productos
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/productos/estado-producto")} className="w-full" id="link-sidebar">
                         Estado Producto
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/productos/categorias")} className="w-full" id="link-sidebar">
                         Categorias
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/productos/ofertas")} className="w-full" id="link-sidebar">
                         Ofertas
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/productos/valoraciones")} className="w-full" id="link-sidebar">
                         Valoraciones
                       </a>
                     </li>
@@ -369,32 +375,32 @@ export function UsersGoogle() {
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-3">
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos")} className="w-full" id="link-sidebar">
                         Lista de pedidos
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos/detalle-pedido")} className="w-full" id="link-sidebar">
                         Detalle de Pedidos
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos/estado-pedido")} className="w-full" id="link-sidebar">
                         Estado del pedido
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos/metodo-de-pago")} className="w-full" id="link-sidebar">
                         Métodos de pago
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos/entregas")} className="w-full" id="link-sidebar">
                         Entrega
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/pedidos/pagos")} className="w-full" id="link-sidebar">
                         Pagos
                       </a>
                     </li>
@@ -402,7 +408,7 @@ export function UsersGoogle() {
                 </details>
               </li>
 
-              {/* Otros botones */}
+              
               <li className="li-sidebar">
                 <details className="w-full overflow-visible">
                   <summary
@@ -420,17 +426,17 @@ export function UsersGoogle() {
                   </summary>
                   <ul className="is-drawer-close:!hidden !pl-2 flex flex-col gap-3">
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-direcciones")} className="w-full" id="link-sidebar">
                         Direcciones
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-departamentos")} className="w-full" id="link-sidebar">
                         Departamento
                       </a>
                     </li>
                     <li className="li-sidebar2">
-                      <a href="#" className="w-full" id="link-sidebar">
+                      <a onClick={() => navigate("/private/ubicaciones/administrar-municipios")} className="w-full" id="link-sidebar">
                         Municipios
                       </a>
                     </li>
@@ -444,7 +450,7 @@ export function UsersGoogle() {
                            is-drawer-close:justify-center is-drawer-close:flex-col is-drawer-close:items-center is-drawer-close:gap-1
                            is-drawer-close:tooltip is-drawer-close:tooltip-right"
                   data-tip="Actividad"
-                  id="btn-hover"
+                  id="btn-hover" onClick={() => navigate("/private/usuarios/actividad-usuarios")}
                 >
                   <ListNested className="is-drawer-close:w-5 is-drawer-close:h-5 is-drawer-open:w-4 is-drawer-open:h-4" />
                   <span className="is-drawer-close:hidden flex-1 text-left pl-2">
